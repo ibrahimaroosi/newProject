@@ -1,0 +1,219 @@
+body {
+	text-align: center;
+	max-width: 60%;
+	margin: 5px auto 20px;
+	background-color: rgba(128, 128, 128, 0.747);
+}
+@media screen and (max-width: 480px) {
+	body {
+		max-width: 100%;
+		margin: 3px 10px;
+	}
+}
+.container1 {
+	font-size: 40px;
+	width: 100%;
+	padding: 2px;
+	background: LightGray;
+	display: grid;
+	/* We created grid system */
+	grid-template-columns: 20% 20% 20%;
+	/* We created 3 column grid with 20% column width */
+	/* Number of rows will set automatically */
+	grid-template-rows: 100px 100px;
+	/* We set two rows with 100px row height */
+	/* If we add more items, the default row height will be followed */
+}
+.d1 {
+	background: LightSkyBlue;
+}
+.d2 {
+	background: LightSalmon;
+}
+.d3 {
+	background: PaleTurquoise;
+}
+.d4 {
+	background: LightPink;
+}
+.d5 {
+	background: PaleGreen;
+}
+.d6 {
+	background: rgb(182, 190, 107);
+}
+.d7 {
+	background: rgb(99, 71, 204);
+}
+.d8 {
+	background: rgb(197, 23, 130);
+}
+.container2 {
+	font-size: 40px;
+	width: 100%;
+	padding: 2px;
+	background: LightGray;
+	display: grid;
+	grid-template-columns: 1fr 1fr 50%; /*fr - fraction unit*/
+	/* We have created 3 column grid with 3rd column as 50% of container's width and other two columns shares equally the remaining width of the container */
+	/* grid-column-gap: 5px; */
+	/* The above snippet creates 5px column gap */
+	/* grid-row-gap: 3px; */
+	/* This will create 3px of row gap */
+
+	/* Also we can use short hand property for both row and column */
+	grid-gap: 5px;
+	/* This will set row and column gap as 5px */
+	gap: 3px 5px; /*grid-gap renamed to gap in CSS3*/
+	/* This will set 3px row gap and 5px column gap */
+}
+.container3 {
+	/* If you feel hard to understand, comment all justify and align properties in .container3 and check uncommenting one by one */
+	font-size: 40px;
+	width: 100%;
+	height: 300px;
+	padding: 2px;
+	background: LightGray;
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	/* What if we need more number of columns, we have a function for that */
+	/* Repeat function */
+	/* grid-template-columns: repeat(10, 1fr); */
+	/* The above code will create 10 column grid with equal width */
+	/* If we want to create 10 col grid with two different width repeatedly */
+	/* repeat (5, 30px 50px), we can set different repeated values like this*/
+	gap: 5px;
+	/* justify-items: center; */
+	/* Above code will center all items horizontally */
+	/* align-items: end; */
+	/* Above code will align all items to end vertically */
+}
+.container3 > div {
+	border: solid 1px black;
+}
+.container3 > .d4 {
+	/* So far we used grid properties for containers, now we gonna use grid item properties */
+	grid-column: 2/4;
+	/* The above snippet set span for .d4 element */
+	/*There are four lines in 3 column grid, (2/4 denotes) The span starts from line 2 to line 4.  So it will take last two columns width*/
+}
+.container3 > .d1 {
+	grid-row: 1/3;
+	/* The above snippet set span of line 1 to line 3 for .d1 item */
+	align-self: center;
+	/* The above code will center .d1 item vertically */
+}
+.container3 > .d2 {
+	justify-self: start;
+	/* The above code will align .d2 item to left*/
+	/*The default vallue is stretch*/
+	/* If we want to align all items in same we can use justify-items for container (See .container3)  */
+}
+.container4 {
+	font-size: 40px;
+	width: 100%;
+	padding: 2px;
+	background: LightGray;
+	display: grid;
+	/* grid-template-columns: 1fr 1fr 1fr;*/ /*It won't need after applying grid area*/
+	gap: 5px;
+	/* We can group cells together by using grid-template-areas */
+	grid-template-areas: "header header header" "article content content" "footer footer footer";
+	/* We created 3 row 3 column grid */
+	/* 1st row is header, last row is footer and middle row has one article column and one content column */
+	/* Using 3 header in 1st row means one header column with column span value of 3 */
+}
+.container4 > .d1 {
+	grid-area: header;
+	/* Now the .d1 item occupies header areas */
+}
+.container4 > .d4 {
+	grid-area: footer;
+	/* Footer area will be filled by .d4 element */
+}
+.container4 > .d3 {
+	grid-area: content;
+	/* .d3 element filled content area */
+}
+/* We have created a simple website layout for conntainer4 */
+.container5 {
+	font-size: 40px;
+	width: 100%;
+	padding: 2px;
+	background: LightGray;
+	display: grid;
+	gap: 5px;
+}
+.container5 > .d1 {
+	grid-area: 1/1/2/5;
+	/* Code explanation: .d1 element starts from line 1 to line 2 vertically and starts from line 1 to line 5 hizontally (col span = 4 and row span = 1) */
+	/* So it is four column grid */
+}
+.container5 > .d3 {
+	grid-area: 2/2/3/5;
+}
+.container5 > .d4 {
+	grid-area: 3/1/4/5;
+}
+.minmax {
+	font-size: 40px;
+	width: 100%;
+	padding: 2px;
+	background: LightGray;
+	display: grid;
+	gap: 5px;
+	grid-template-columns: repeat(3, minmax(100px, 250px));
+	/* We set min width 100px and max width 250px, so width of column will grow upto 250px and won't shrink less than 100px */
+}
+.auto-fill {
+	font-size: 40px;
+	width: 100%;
+	padding: 2px;
+	background: LightGray;
+	display: grid;
+	gap: 5px;
+	grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+	/* It will create columns responsively*/
+	/* If width of container is 150px, it will create 1 col grid and width of col will increase until the width of container reaches 300px. After it will be changed to 2 col grid with 150px col width  */
+	/* Check it out on browser */
+}
+/* auto-fill will not occupy extra space if it has enough container width to fill all cells in one line */
+/* If we have only one cell and want to occupy full width, we have to use auto-fit */
+.auto-fit {
+	font-size: 40px;
+	width: 100%;
+	padding: 2px;
+	background: LightGray;
+	display: grid;
+	gap: 5px;
+	grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+	/* Change the auto-fit to auto-fill and see the difference */
+}
+.nested-grid {
+	font-size: 40px;
+	width: 100%;
+	min-height: 500px;
+	padding: 2px;
+	background: lightgray;
+	display: grid;
+	gap: 5px;
+	grid-template-areas: "header header header" "menu content content" "footer footer footer";
+	/* We created area template for 3 col 3 row grid */
+	grid-template-columns: auto 1fr;
+	/* First column will take width of its content, second  will take remaining width   */
+    /* header and footer taking more height, so */
+    grid-template-rows: auto 1fr auto;
+}
+.nested-grid > .d1 {
+	grid-area: header;
+}
+.nested-grid > .d3 {
+	grid-area: content;
+    display: grid;
+    grid-template-columns: 35% 1fr;
+    /* We created 2 col grid inside content container with 35% width for 1st col and 65%(1fr) width for second col*/
+}
+.nested-grid > .d4 {
+	grid-area: footer;
+}
+/*We used area template*/
